@@ -28,6 +28,10 @@ Right-click anywhere on the app to open a popup menu. You will be presented with
   - *Hold* right-click to change color/opacity of the first 3 options
   - Left-click *only on the image* to change its opacity.
 
+## Download link
+
+Link to [Releases](https://github.com/ChrisPC-39/see_through/releases)
+
 ## Examples
 
 When starting the app, this is how the window will look like:
