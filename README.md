@@ -1,7 +1,9 @@
 # see_through
 
-A Windows app made in Flutter.
+A Windows(?) app made in Flutter.
 "see_through" gives you the ability to always render the app on the screen. Check the examples for more details.
+
+The app should theoretically work for Windows, Linux and MacOS, however I am unable to build it for MacOS (because I don't own a Macbook) and I can't test it for Linux because I am too lazy to set it up. Oopsie!
 
 ## How to use
 
