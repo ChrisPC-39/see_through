@@ -1,11 +1,12 @@
 import 'dart:io';
 
+import 'package:dart_vlc/dart_vlc.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_acrylic/flutter_acrylic.dart';
 import 'package:bitsdojo_window/bitsdojo_window.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:file_picker/file_picker.dart';
+import 'package:see_through/screens/webview.dart';
 import 'package:window_manager/window_manager.dart' as wm;
 
 import 'screens/image.dart';
@@ -21,6 +22,8 @@ Future<void> main() async {
   if (Platform.isWindows) {
     await Window.hideWindowControls();
   }
+
+  DartVLC.initialize();
 
   runApp(const MaterialApp(
     home: MyApp(),
@@ -49,7 +52,8 @@ class _MyAppState extends State<MyApp> with wm.WindowListener {
   bool isRuleOfThirds = false;
   bool isSymmetry = false;
   bool isPhi = false;
-  bool isImage = false;
+  bool isFile = false;
+  bool isWebView = false;
 
   bool isOnTop = false;
 
@@ -85,6 +89,9 @@ class _MyAppState extends State<MyApp> with wm.WindowListener {
     setState(() => pickerColor = color);
   }
 
+  bool isVideo(File? file) =>
+      file.toString().contains(".mp4") || file.toString().contains(".webm");
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -105,9 +112,15 @@ class _MyAppState extends State<MyApp> with wm.WindowListener {
               Container(),
 
               Visibility(
-                visible: isImage,
+                visible: isWebView,
+                child: const BrowserWebView(),
+              ),
+
+              Visibility(
+                visible: isFile,
                 child: CustomFileImage(
                   file: imageFile,
+                  isVideo: isVideo(imageFile),
                 ),
               ),
 
@@ -153,9 +166,7 @@ class _MyAppState extends State<MyApp> with wm.WindowListener {
                 TextStyle(color: isRuleOfThirds ? Colors.green : Colors.white),
           ),
           value: "ruleOfThirds",
-          onTap: () => setState(
-            () => isRuleOfThirds = !isRuleOfThirds,
-          ),
+          onTap: () => setState(() => isRuleOfThirds = !isRuleOfThirds),
         ),
         PopupMenuItem(
           child: Text(
@@ -163,9 +174,7 @@ class _MyAppState extends State<MyApp> with wm.WindowListener {
             style: TextStyle(color: isSymmetry ? Colors.green : Colors.white),
           ),
           value: "symmetry",
-          onTap: () => setState(
-            () => isSymmetry = !isSymmetry,
-          ),
+          onTap: () => setState(() => isSymmetry = !isSymmetry),
         ),
         PopupMenuItem(
           child: Text(
@@ -173,21 +182,27 @@ class _MyAppState extends State<MyApp> with wm.WindowListener {
             style: TextStyle(color: isPhi ? Colors.green : Colors.white),
           ),
           value: "phi",
-          onTap: () => setState(
-            () => isPhi = !isPhi,
-          ),
+          onTap: () => setState(() => isPhi = !isPhi),
         ),
         PopupMenuItem(
           child: Text(
-            "${!isImage ? "Pick" : "Remove"} image",
-            style: TextStyle(color: isImage ? Colors.green : Colors.white),
+            "${!isFile ? "Pick" : "Remove"} file",
+            style: TextStyle(color: isFile ? Colors.green : Colors.white),
           ),
           value: "image",
           onTap: () async {
-            if (!isImage) await _pickFile();
-            setState(
-              () => isImage = !isImage,
-            );
+            if (!isFile) await _pickFile();
+            setState(() => isFile = !isFile);
+          },
+        ),
+        PopupMenuItem(
+          child: Text(
+            "${!isWebView ? "Enable" : "Disable"} web view",
+            style: TextStyle(color: isWebView ? Colors.green : Colors.white),
+          ),
+          value: "image",
+          onTap: () {
+            setState(() => isWebView = !isWebView);
           },
         ),
         PopupMenuItem(

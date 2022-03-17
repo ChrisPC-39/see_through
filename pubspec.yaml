@@ -39,6 +39,10 @@ dependencies:
   window_manager: ^0.1.5
   flutter_colorpicker: ^1.0.3
   file_picker: ^4.4.0
+  dart_vlc: ^0.1.8
+  dart_vlc_ffi: ^0.1.5
+  provider: ^6.0.2
+  webview_windows: ^0.1.6
 
 dev_dependencies:
   flutter_test:
@@ -50,10 +54,12 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^1.0.0
+  msix: ^3.3.2
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
+# <a href="https://www.flaticon.com/free-icons/tabs" title="tabs icons">Tabs icons created by Freepik - Flaticon</a>
 # The following section is specific to Flutter.
 flutter:
   assets:

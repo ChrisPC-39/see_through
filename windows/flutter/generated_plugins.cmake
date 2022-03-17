@@ -4,7 +4,9 @@
 
 list(APPEND FLUTTER_PLUGIN_LIST
   bitsdojo_window_windows
+  dart_vlc
   flutter_acrylic
+  webview_windows
   window_manager
 )
 

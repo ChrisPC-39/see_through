@@ -1,13 +1,17 @@
 import 'dart:io';
 
+import 'package:dart_vlc/dart_vlc.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class CustomFileImage extends StatefulWidget {
   final File? file;
+  final bool isVideo;
 
   const CustomFileImage({
     Key? key,
     required this.file,
+    required this.isVideo,
   }) : super(key: key);
 
   @override
@@ -17,25 +21,76 @@ class CustomFileImage extends StatefulWidget {
 class _CustomFileImageState extends State<CustomFileImage>
     with TickerProviderStateMixin {
   double _sliderVal = 100;
+  bool _isClick = false;
+
   late AnimationController controller;
+
+  Player player = Player(id: 1);
+  late Media video;
 
   @override
   void initState() {
     super.initState();
 
-    controller =
-        AnimationController(duration: const Duration(milliseconds: 0), vsync: this);
+    if (widget.isVideo) {
+      video = Media.file(widget.file!);
+      player.open(video);
+    }
+
+    controller = AnimationController(
+        duration: const Duration(milliseconds: 0), vsync: this);
     controller.forward();
+  }
+
+  @override
+  void dispose() {
+    player.dispose();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => _showPopupMenu(context),
-      // onSecondaryTap: () => controller.reverse(),
-      child: Image.file(
-        widget.file!,
-        opacity: CurvedAnimation(parent: controller, curve: Curves.linear),
+      onTap: () => setState(() => _isClick = !_isClick),
+      onDoubleTap: () => setState(() => _isClick = !_isClick),
+      child: Stack(
+        children: [
+          widget.isVideo
+              ? AnimatedOpacity(
+                  duration: const Duration(seconds: 0),
+                  opacity: _sliderVal / 100,
+                  child: Video(
+                    player: player,
+                    width: 1080,
+                    height: 1920,
+                    showControls: true,
+                  ),
+                )
+              : Image.file(
+                  widget.file!,
+                  opacity: CurvedAnimation(
+                    parent: controller,
+                    curve: Curves.linear,
+                  ),
+                ),
+          AnimatedOpacity(
+            duration: const Duration(milliseconds: 200),
+            opacity: _isClick ? 1 : 0,
+            child: SizedBox(
+              width: 200,
+              height: 100,
+              child: Slider(
+                value: _sliderVal,
+                min: 0,
+                max: 100,
+                onChanged: (newVal) => setState(() {
+                  controller.animateTo(newVal / 100);
+                  _sliderVal = newVal;
+                }),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -57,18 +112,14 @@ class _CustomFileImageState extends State<CustomFileImage>
       elevation: 8.0,
       items: [
         PopupMenuItem(
-          child: StatefulBuilder(
-            builder: (BuildContext context, StateSetter setState) {
-              return Slider(
-                value: _sliderVal,
-                min: 0,
-                max: 100,
-                onChanged: (newVal) => setState(() {
-                  controller.animateTo(newVal / 100);
-                  _sliderVal = newVal;
-                }),
-              );
-            },
+          child: Slider(
+            value: _sliderVal,
+            min: 0,
+            max: 100,
+            onChanged: (newVal) => setState(() {
+              controller.animateTo(newVal / 100);
+              _sliderVal = newVal;
+            }),
           ),
           value: "imageResize",
         ),
