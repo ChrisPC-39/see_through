@@ -1,24 +1,23 @@
 import 'dart:io';
 
 import 'package:dart_vlc/dart_vlc.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-class CustomFileImage extends StatefulWidget {
+class LocalFile extends StatefulWidget {
   final File? file;
   final bool isVideo;
 
-  const CustomFileImage({
+  const LocalFile({
     Key? key,
     required this.file,
     required this.isVideo,
   }) : super(key: key);
 
   @override
-  State<CustomFileImage> createState() => _CustomFileImageState();
+  State<LocalFile> createState() => _LocalFileState();
 }
 
-class _CustomFileImageState extends State<CustomFileImage>
+class _LocalFileState extends State<LocalFile>
     with TickerProviderStateMixin {
   double _sliderVal = 100;
   bool _isClick = false;

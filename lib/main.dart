@@ -6,10 +6,10 @@ import 'package:flutter_acrylic/flutter_acrylic.dart';
 import 'package:bitsdojo_window/bitsdojo_window.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:file_picker/file_picker.dart';
+import 'package:see_through/screens/local_file.dart';
 import 'package:see_through/screens/webview.dart';
 import 'package:window_manager/window_manager.dart' as wm;
 
-import 'screens/image.dart';
 import 'screens/phi.dart';
 import 'screens/rule_of_thirds.dart';
 import 'screens/symmetry.dart';
@@ -118,7 +118,7 @@ class _MyAppState extends State<MyApp> with wm.WindowListener {
 
               Visibility(
                 visible: isFile,
-                child: CustomFileImage(
+                child: LocalFile(
                   file: imageFile,
                   isVideo: isVideo(imageFile),
                 ),
