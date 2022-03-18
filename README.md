@@ -63,7 +63,7 @@ Resizing the image:
 ![custom_image_2](example_assets/custom_image_2.png?raw=true "Resizing the image")
 
 Opening a web page:
-![web_view_1]((example_assets/web_view_1.png?raw=true "Opening a web page")
+![web_view_1](example_assets/web_view_1.png?raw=true "Opening a web page")
 
 Rendering "Rule of Thirds" on top of the image:
 ![custom_image_3](example_assets/custom_image_3.png?raw=true "Rendering Rule of Thirds on top of the image")
