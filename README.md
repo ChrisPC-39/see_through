@@ -39,6 +39,12 @@ Right-click anywhere on the app to open a popup menu. You will be presented with
 
 Link to [Releases](https://github.com/ChrisPC-39/see_through/releases)
 
+## Latest update: 1.1.0
+  - Users are now able to upload local videos (not just images).
+  - Users can now Google anything with the new "Web view" feature.
+  - Improved the opacity slider on images/videos
+  - Small code improvements
+
 ## Examples
 
 When starting the app, this is how the window will look like:
