@@ -13,11 +13,18 @@ Right-click anywhere on the app to open a popup menu. You will be presented with
   - You can enable multiple of them at once.
   - You can change their color and opacity by *holding* righ-click anywhere on the screen (will prompt you to a picker).
 
-### Selecting "Pick image" will prompt you to "upload" a file from your computer. Keep in mind the following: 
-  - Only image file extensions are supported (png, jpg, webp, GIF, etc.) are supported. If you upload a video (mp4, webm, etc.) the app will not do anything, so it's not the end of the world, but you will not be told that something went wrong.
-  - After uploading the image, you can resize the window to be smaller, but you won't be able to stretch the image past it's maximum width and height.
-  - You'll be able to left-click *on the image* to change its opacity.
-  - You'll still be able to enable any other function (e.g: display the Rule of Thirds on top of the image). 
+### Selecting "Pick file" will prompt you to "upload" a file from your computer. Keep in mind the following: 
+  - You may upload any image or video file (jpg, png, webp, GIF, mp4, webm, etc). 
+  - Uploading a file may take some time, depending on its size! The app may appear frozen, but please be patient for a few seconds! 
+  - After uploading the file, you can resize the window to be smaller, but you won't be able to stretch the image/video past it's maximum width and height.
+  - You'll be able to *hold* left-click *on the image/video* to change its opacity.
+  - You'll still be able to enable any other function (e.g: display the Rule of Thirds on top of the file). 
+
+### Selecting "Web view" will open a browser tab in the app. Keep in mind the following:
+  - The text field at the top accepts ONLY URLs. Don't try to search for something there, use the Google search bar for that
+  - Underneath the text field you will be presented with a slider. Drag to adjust opacity.
+  - You'll be able to *hold* left-click to make the text field and the slider dissapear. 
+  - You'll still be able to enable any other function (e.g: display the Rule of Thirds on top of the web page). 
 
 ### Selecting "Always on top" will force draw the app on top of any other apps you are currently running (it will always be visible).
 ### Selecting "Close app" will exit the app.
@@ -26,7 +33,7 @@ Right-click anywhere on the app to open a popup menu. You will be presented with
 
   - Right-click to open popup menu
   - *Hold* right-click to change color/opacity of the first 3 options
-  - Left-click *only on the image* to change its opacity.
+  - *Hold* left-click on the image/video or web page to change its opacity.
 
 ## Download link
 
