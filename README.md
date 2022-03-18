@@ -65,6 +65,12 @@ Resizing the image:
 Opening a web page:
 ![web_view_1](example_assets/web_view_1.png?raw=true "Opening a web page")
 
+Opening a YouTube video (through "web view"):
+![web_view_2_yt](example_assets/web_view_2_yt.png?raw=true "Opening a YouTube video")
+
+Changing the opacity of a web page:
+![web_view_3_yt](example_assets/web_view_3_yt.png?raw=true "Changing the opacity of a web page")
+
 Rendering "Rule of Thirds" on top of the image:
 ![custom_image_3](example_assets/custom_image_3.png?raw=true "Rendering Rule of Thirds on top of the image")
 
